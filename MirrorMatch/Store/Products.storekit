@@ -1,0 +1,74 @@
+{
+  "identifier" : "A1B2C3D4",
+  "nonRenewingSubscriptions" : [],
+  "products" : [
+    {
+      "displayPrice" : "1.99",
+      "familyShareable" : false,
+      "internalID" : "TKT20",
+      "localizations" : [ { "description" : "20 Rematch Tickets", "displayName" : "20 Tickets", "locale" : "en_US" } ],
+      "productID" : "ch.connexa.mirrormatch.tickets.20",
+      "referenceName" : "Tickets 20",
+      "type" : "Consumable"
+    },
+    {
+      "displayPrice" : "4.99",
+      "familyShareable" : false,
+      "internalID" : "TKT75",
+      "localizations" : [ { "description" : "75 Rematch Tickets", "displayName" : "75 Tickets", "locale" : "en_US" } ],
+      "productID" : "ch.connexa.mirrormatch.tickets.75",
+      "referenceName" : "Tickets 75",
+      "type" : "Consumable"
+    },
+    {
+      "displayPrice" : "3.99",
+      "familyShareable" : true,
+      "internalID" : "SKINS",
+      "localizations" : [ { "description" : "Unlock every premium trail skin", "displayName" : "All Skins", "locale" : "en_US" } ],
+      "productID" : "ch.connexa.mirrormatch.skins.all",
+      "referenceName" : "All Skins",
+      "type" : "NonConsumable"
+    }
+  ],
+  "settings" : { "_failTransactionsEnabled" : false, "_locale" : "en_US", "_storefront" : "USA", "_askToBuyEnabled" : false },
+  "subscriptionGroups" : [
+    {
+      "id" : "21A0B1C2",
+      "localizations" : [],
+      "name" : "Mirror Match Pro",
+      "subscriptions" : [
+        {
+          "adHocOffers" : [],
+          "codeOffers" : [],
+          "displayPrice" : "29.99",
+          "familyShareable" : false,
+          "groupNumber" : 1,
+          "internalID" : "PROY",
+          "introductoryOffer" : { "internalID" : "TRIAL3", "paymentMode" : "free", "subscriptionPeriod" : "P3D" },
+          "localizations" : [ { "description" : "Everything unlocked, billed yearly", "displayName" : "Pro Yearly", "locale" : "en_US" } ],
+          "productID" : "ch.connexa.mirrormatch.pro.yearly",
+          "recurringSubscriptionPeriod" : "P1Y",
+          "referenceName" : "Pro Yearly",
+          "subscriptionGroupID" : "21A0B1C2",
+          "type" : "RecurringSubscription"
+        },
+        {
+          "adHocOffers" : [],
+          "codeOffers" : [],
+          "displayPrice" : "4.99",
+          "familyShareable" : false,
+          "groupNumber" : 2,
+          "internalID" : "PROW",
+          "introductoryOffer" : null,
+          "localizations" : [ { "description" : "Everything unlocked, billed weekly", "displayName" : "Pro Weekly", "locale" : "en_US" } ],
+          "productID" : "ch.connexa.mirrormatch.pro.weekly",
+          "recurringSubscriptionPeriod" : "P1W",
+          "referenceName" : "Pro Weekly",
+          "subscriptionGroupID" : "21A0B1C2",
+          "type" : "RecurringSubscription"
+        }
+      ]
+    }
+  ],
+  "version" : { "major" : 3, "minor" : 0 }
+}

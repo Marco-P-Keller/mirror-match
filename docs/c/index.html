@@ -1,0 +1,18 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>You've been challenged – Mirror Match</title>
+<meta property="og:title" content="Can you copy better than me? – Mirror Match"><meta property="og:description" content="I challenged you to a Mirror Match. Tap to play the exact same moves.">
+<link rel="stylesheet" href="../style.css"></head><body><div class="wrap" style="text-align:center">
+<h1>Mirror Match</h1>
+<div class="card"><p id="who" class="sub">Someone challenged you!</p><p class="score" id="score"></p><p id="hint" class="sub"></p></div>
+<p><a class="btn" id="open" href="#">Play the challenge</a></p>
+<p><a class="btn alt" href="https://apps.apple.com/app/mirror-match-copy-battle/id0000000000" id="get">Get Mirror Match (free)</a></p>
+<p style="color:#99a;font-size:14px">Already installed? Tap “Play the challenge”. Not yet? Get the app first, then tap this link again.</p>
+<footer><a href="../privacy.html">Privacy</a> · <a href="../support.html">Support</a></footer>
+</div>
+<script>
+var q=new URLSearchParams(location.search);var n=(q.get('n')||'A friend').slice(0,18);
+var el=document.getElementById('who');
+if(q.get('k')==='m'){el.textContent=n+' made a move for you to copy';document.getElementById('hint').textContent='Draw it as exactly as you can. Best of 3.';}
+else{el.textContent=n+' challenged you';var p=q.get('p');if(p){document.getElementById('score').textContent=p+'/500';document.getElementById('hint').textContent='Score to beat. Same 5 moves.';}}
+document.getElementById('open').href='mirrormatch://c?'+location.search.slice(1);
+</script></body></html>
