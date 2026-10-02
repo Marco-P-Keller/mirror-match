@@ -52,7 +52,7 @@ struct PaywallView: View {
                         }
                     }
 
-                    if store.products.isEmpty {
+                    if !store.loaded {
                         if store.loading { ProgressView().padding() } else {
                             Button("Couldn't load prices · Retry") { Task { await store.load() } }.buttonStyle(SecondaryButtonStyle())
                         }
@@ -69,8 +69,8 @@ struct PaywallView: View {
                         if store.busy { ProgressView().tint(.black) } else { Text(ctaTitle) }
                     }
                     .buttonStyle(PrimaryButtonStyle(colors: [Theme.gold, .orange]))
-                    .disabled(store.products[selected] == nil || store.busy)
-                    .opacity(store.products[selected] == nil ? 0.5 : 1)
+                    .disabled(!store.has(selected) || store.busy)
+                    .opacity(store.has(selected) ? 1 : 0.5)
 
                     Text(legal).font(Theme.font(11, .medium)).foregroundStyle(.white.opacity(0.5)).multilineTextAlignment(.center)
 
@@ -243,6 +243,6 @@ struct ShopView: View {
             .overlay(RoundedRectangle(cornerRadius: 18).strokeBorder(Theme.stroke))
         }
         .buttonStyle(.plain).foregroundStyle(.white)
-        .disabled(owned || store.products[id] == nil || store.busy)
+        .disabled(owned || !store.has(id) || store.busy)
     }
 }

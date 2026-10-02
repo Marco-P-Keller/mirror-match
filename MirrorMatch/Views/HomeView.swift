@@ -36,6 +36,18 @@ struct HomeView: View {
             }
         }
         .onAppear { game.refreshDay() }
+        #if DEBUG
+        .task {
+            try? await Task.sleep(for: .seconds(1.0))
+            switch Autoplay.route {
+            case "skins": sheet = .skins
+            case "stats": sheet = .stats
+            case "friends": sheet = .friends
+            case "settings": sheet = .settings
+            default: break
+            }
+        }
+        #endif
     }
 
     private var topBar: some View {

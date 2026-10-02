@@ -127,16 +127,33 @@ final class StoreManager {
     }
 
     // MARK: display helpers
-    func price(_ id: String) -> String { products[id]?.displayPrice ?? "—" }
+    #if DEBUG
+    /// Screenshot-only fake catalog (launch argument -demo).
+    private var mock: Bool { Autoplay.demo && products.isEmpty }
+    private static let mockPrices = [ProductID.yearly: "$29.99", ProductID.weekly: "$4.99", ProductID.tickets20: "$1.99", ProductID.tickets75: "$4.99", ProductID.skins: "$3.99"]
+    #else
+    private var mock: Bool { false }
+    #endif
+    var loaded: Bool { mock || !products.isEmpty }
+    func has(_ id: String) -> Bool { mock || products[id] != nil }
 
-    var yearlyHasTrial: Bool { products[ProductID.yearly]?.subscription?.introductoryOffer?.paymentMode == .freeTrial }
+    func price(_ id: String) -> String {
+        #if DEBUG
+        if mock { return StoreManager.mockPrices[id] ?? "—" }
+        #endif
+        return products[id]?.displayPrice ?? "—"
+    }
+
+    var yearlyHasTrial: Bool { mock || products[ProductID.yearly]?.subscription?.introductoryOffer?.paymentMode == .freeTrial }
 
     var yearlyPerWeek: String? {
+        if mock { return "$0.58" }
         guard let p = products[ProductID.yearly] else { return nil }
         return (p.price / 52).formatted(p.priceFormatStyle)
     }
 
     var yearlySavings: Int? {
+        if mock { return 88 }
         guard let y = products[ProductID.yearly], let w = products[ProductID.weekly] else { return nil }
         let yearlyIfWeekly = w.price * 52
         guard yearlyIfWeekly > 0 else { return nil }

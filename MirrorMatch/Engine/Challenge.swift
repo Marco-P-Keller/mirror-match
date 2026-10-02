@@ -12,7 +12,7 @@ struct Challenge: Hashable, Codable, Identifiable {
     var customPoints: [CGPoint] = []
 
     static let host = "https://marco-p-keller.github.io/mirror-match/c/"
-    static let appStoreURL = "https://apps.apple.com/app/mirror-match-copy-battle/id0000000000"
+    static let appStoreURL = "https://apps.apple.com/app/id6818487927"
 
     var webURL: URL {
         var c = URLComponents(string: Challenge.host)!
